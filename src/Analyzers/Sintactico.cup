@@ -1,0 +1,95 @@
+/* 1. Package e importaciones */
+package Analyzers;
+import Components.ErrorS;
+import Components.Instruction;
+import java_cup.runtime.*;
+import java.util.ArrayList;
+
+/* 2. Codigo para el parser, variables y metodos */
+
+parser code 
+{:
+    Lexico s;
+    public Sintactico(Lexico s) {
+        super(s);
+        this.s = s;
+    }
+    
+    int nOp = 0;
+    ArrayList<Instruction> flowExe = new ArrayList<>();
+    public void syntax_error(Symbol s) {
+        flowExe.add(new Instruction(new ErrorS(s.left,s.right,s.value)));
+    }
+    public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception {
+        flowExe.add(new Instruction(new ErrorS(s.left,s.right,s.value,false)));
+    }
+    public ArrayList<String> getOperations() {
+        return s.operations;
+    }
+    public String getInputs() {
+        String ops = "OPERATIONS\n";
+        if(s.operations.size() > 0) {
+            for(int i = 0; i < s.operations.size(); i ++) {
+                ops += s.operations.get(i) + "\n";
+            }
+        }
+        else {
+            ops += "No Operations\n";
+        }
+        return ops + "\n";
+    }
+    public void operationFinish(Double r) {
+        flowExe.add(new Instruction(s.operations.get(nOp) + " = " + r));nOp += 1;
+    }
+    public String getExecution() {
+        String exe = "";
+        for(int i = 0; i < flowExe.size(); i ++) {
+            exe += flowExe.get(i) + "\n";
+        }
+        return exe + "\n";
+    }
+:} 
+
+/* 3. Terminales*/
+
+terminal String SEMICOLON,LPAR,RPAR,LKS,RKS,LK,RK;
+terminal String PLUS,MINUS,MULT,DIV;
+terminal String NUMBER;
+terminal String STRING;
+terminal String UMINUS;
+terminal String RW_CALCULATE;
+
+/* 4. No Terminales*/
+non terminal ini;
+non terminal instructions;
+non terminal Double instruction;
+non terminal Double expresion;
+
+/* 5. Precedencias */
+precedence left PLUS,MINUS;
+precedence left MULT,DIV;
+precedence right UMINUS;
+
+/* 6. Gramatica Libre de Contexto */
+
+start with ini;
+
+ini ::= LK instructions RK;
+
+instructions ::=
+    instruction:a instructions |
+    instruction:a |
+    error instruction:a
+;
+
+instruction ::= RW_CALCULATE LKS expresion:a RKS SEMICOLON {:RESULT = a;operationFinish(a);:};
+
+expresion ::=
+    MINUS expresion:a               {:RESULT = a *-1;:} %prec UMINUS |
+    expresion:a PLUS    expresion:b {:RESULT = a + b;:} |
+    expresion:a MINUS   expresion:b {:RESULT = a - b;:} |
+    expresion:a MULT    expresion:b {:RESULT = a * b;:} |
+    expresion:a DIV     expresion:b {:RESULT = a / b;:} |
+    NUMBER:a                        {:RESULT = new Double(a);:} |
+    LPAR expresion:a RPAR           {:RESULT = a;:}
+;
