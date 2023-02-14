@@ -7,7 +7,7 @@ public class Scanner {
     public static void generate() {
         jflex.Main.generate(
             new File(
-                "src/main/java/Analyzers/Lexico.jflex"
+                "src/Analyzers/Lexico.jflex"
             )
         );
     }

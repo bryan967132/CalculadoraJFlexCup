@@ -8,12 +8,12 @@ public class Parser {
             java_cup.Main.main(
                 new String[] {
                     "-destdir",
-                    "src/main/java/Analyzers",
+                    "src/Analyzers",
                     "-symbols",
                     "sym",
                     "-parser",
                     "Sintactico",
-                    "src/main/java/Analyzers/Sintactico.cup"
+                    "src/Analyzers/Sintactico.cup"
                 }
             );
         }
