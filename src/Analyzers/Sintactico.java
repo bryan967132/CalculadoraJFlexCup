@@ -34,8 +34,8 @@ public class Sintactico extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\015\000\002\002\004\000\002\002\005\000\002\003" +
-    "\004\000\002\003\003\000\002\003\004\000\002\004\007" +
+    "\000\015\000\002\002\004\000\002\002\005\000\002\002" +
+    "\004\000\002\003\004\000\002\003\003\000\002\004\007" +
     "\000\002\005\004\000\002\005\005\000\002\005\005\000" +
     "\002\005\005\000\002\005\005\000\002\005\003\000\002" +
     "\005\005" });
@@ -46,30 +46,29 @@ public class Sintactico extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\035\000\004\011\005\001\002\000\004\002\037\001" +
-    "\002\000\006\003\011\022\010\001\002\000\004\012\036" +
-    "\001\002\000\010\003\011\012\ufffe\022\010\001\002\000" +
-    "\004\007\013\001\002\000\004\022\010\001\002\000\004" +
-    "\012\ufffd\001\002\000\010\005\015\014\016\017\014\001" +
-    "\002\000\016\006\ufff6\010\ufff6\013\ufff6\014\ufff6\015\ufff6" +
-    "\016\ufff6\001\002\000\010\005\015\014\016\017\014\001" +
-    "\002\000\010\005\015\014\016\017\014\001\002\000\014" +
-    "\010\020\013\022\014\023\015\021\016\024\001\002\000" +
-    "\004\004\031\001\002\000\010\005\015\014\016\017\014" +
-    "\001\002\000\010\005\015\014\016\017\014\001\002\000" +
-    "\010\005\015\014\016\017\014\001\002\000\010\005\015" +
-    "\014\016\017\014\001\002\000\016\006\ufff7\010\ufff7\013" +
-    "\ufff7\014\ufff7\015\ufff7\016\ufff7\001\002\000\016\006\ufff9" +
-    "\010\ufff9\013\ufff9\014\ufff9\015\021\016\024\001\002\000" +
-    "\016\006\ufffa\010\ufffa\013\ufffa\014\ufffa\015\021\016\024" +
-    "\001\002\000\016\006\ufff8\010\ufff8\013\ufff8\014\ufff8\015" +
-    "\ufff8\016\ufff8\001\002\000\010\003\ufffc\012\ufffc\022\ufffc" +
-    "\001\002\000\016\006\ufffb\010\ufffb\013\ufffb\014\ufffb\015" +
-    "\ufffb\016\ufffb\001\002\000\014\006\034\013\022\014\023" +
-    "\015\021\016\024\001\002\000\016\006\ufff5\010\ufff5\013" +
-    "\ufff5\014\ufff5\015\ufff5\016\ufff5\001\002\000\004\012\uffff" +
-    "\001\002\000\004\002\000\001\002\000\004\002\001\001" +
-    "\002" });
+    "\000\034\000\004\011\005\001\002\000\004\002\036\001" +
+    "\002\000\006\012\010\022\011\001\002\000\004\012\035" +
+    "\001\002\000\006\012\ufffd\022\011\001\002\000\004\002" +
+    "\uffff\001\002\000\004\007\012\001\002\000\010\005\014" +
+    "\014\015\017\013\001\002\000\016\006\ufff6\010\ufff6\013" +
+    "\ufff6\014\ufff6\015\ufff6\016\ufff6\001\002\000\010\005\014" +
+    "\014\015\017\013\001\002\000\010\005\014\014\015\017" +
+    "\013\001\002\000\014\010\017\013\021\014\022\015\020" +
+    "\016\023\001\002\000\004\004\030\001\002\000\010\005" +
+    "\014\014\015\017\013\001\002\000\010\005\014\014\015" +
+    "\017\013\001\002\000\010\005\014\014\015\017\013\001" +
+    "\002\000\010\005\014\014\015\017\013\001\002\000\016" +
+    "\006\ufff7\010\ufff7\013\ufff7\014\ufff7\015\ufff7\016\ufff7\001" +
+    "\002\000\016\006\ufff9\010\ufff9\013\ufff9\014\ufff9\015\020" +
+    "\016\023\001\002\000\016\006\ufffa\010\ufffa\013\ufffa\014" +
+    "\ufffa\015\020\016\023\001\002\000\016\006\ufff8\010\ufff8" +
+    "\013\ufff8\014\ufff8\015\ufff8\016\ufff8\001\002\000\006\012" +
+    "\ufffc\022\ufffc\001\002\000\016\006\ufffb\010\ufffb\013\ufffb" +
+    "\014\ufffb\015\ufffb\016\ufffb\001\002\000\014\006\033\013" +
+    "\021\014\022\015\020\016\023\001\002\000\016\006\ufff5" +
+    "\010\ufff5\013\ufff5\014\ufff5\015\ufff5\016\ufff5\001\002\000" +
+    "\004\012\ufffe\001\002\000\004\002\000\001\002\000\004" +
+    "\002\001\001\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -77,18 +76,17 @@ public class Sintactico extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\035\000\004\002\003\001\001\000\002\001\001\000" +
+    "\000\034\000\004\002\003\001\001\000\002\001\001\000" +
     "\006\003\005\004\006\001\001\000\002\001\001\000\006" +
-    "\003\034\004\006\001\001\000\002\001\001\000\004\004" +
-    "\011\001\001\000\002\001\001\000\004\005\016\001\001" +
-    "\000\002\001\001\000\004\005\032\001\001\000\004\005" +
-    "\031\001\001\000\002\001\001\000\002\001\001\000\004" +
-    "\005\027\001\001\000\004\005\026\001\001\000\004\005" +
-    "\025\001\001\000\004\005\024\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\003\033\004\006\001\001\000\002\001\001\000\002\001" +
+    "\001\000\004\005\015\001\001\000\002\001\001\000\004" +
+    "\005\031\001\001\000\004\005\030\001\001\000\002\001" +
+    "\001\000\002\001\001\000\004\005\026\001\001\000\004" +
+    "\005\025\001\001\000\004\005\024\001\001\000\004\005" +
+    "\023\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001" });
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -132,15 +130,23 @@ public class Sintactico extends java_cup.runtime.lr_parser {
         super(s);
         this.s = s;
     }
-    
+
     int nOp = 0;
+    int rOp = 0;
     ArrayList<Instruction> flowExe = new ArrayList<>();
     public void syntax_error(Symbol s) {
-        flowExe.add(new Instruction(new ErrorS(s.left,s.right,s.value)));
+        flowExe.add(
+            new Instruction(
+                new ErrorS(
+                    s.left,
+                    s.right,
+                    s.value != null ? s.value : "EOF",
+                    s.value != null
+                )
+            )
+        );
     }
-    public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception {
-        flowExe.add(new Instruction(new ErrorS(s.left,s.right,s.value,false)));
-    }
+    public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception {}
     public ArrayList<String> getOperations() {
         return s.operations;
     }
@@ -157,7 +163,8 @@ public class Sintactico extends java_cup.runtime.lr_parser {
         return ops + "\n";
     }
     public void operationFinish(Double r) {
-        flowExe.add(new Instruction(s.operations.get(nOp) + " = " + r));nOp += 1;
+        flowExe.add(new Instruction(s.operations.get(nOp) + " = " + r));
+        nOp += 1;
     }
     public String getExecution() {
         String exe = "";
@@ -216,38 +223,29 @@ class CUP$Sintactico$actions {
           return CUP$Sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 2: // instructions ::= instruction instructions 
+          case 2: // ini ::= LK RK 
             {
               Object RESULT =null;
-		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
-		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
-		Double a = (Double)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
+
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("ini",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 3: // instructions ::= instruction instructions 
+            {
+              Object RESULT =null;
 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("instructions",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 3: // instructions ::= instruction 
+          case 4: // instructions ::= instruction 
             {
               Object RESULT =null;
-		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
-		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
-		Double a = (Double)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("instructions",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
-            }
-          return CUP$Sintactico$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 4: // instructions ::= error instruction 
-            {
-              Object RESULT =null;
-		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
-		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
-		Double a = (Double)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-
-              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("instructions",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
 

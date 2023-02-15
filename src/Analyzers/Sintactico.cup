@@ -14,15 +14,23 @@ parser code
         super(s);
         this.s = s;
     }
-    
+
     int nOp = 0;
+    int rOp = 0;
     ArrayList<Instruction> flowExe = new ArrayList<>();
     public void syntax_error(Symbol s) {
-        flowExe.add(new Instruction(new ErrorS(s.left,s.right,s.value)));
+        flowExe.add(
+            new Instruction(
+                new ErrorS(
+                    s.left,
+                    s.right,
+                    s.value != null ? s.value : "EOF",
+                    s.value != null
+                )
+            )
+        );
     }
-    public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception {
-        flowExe.add(new Instruction(new ErrorS(s.left,s.right,s.value,false)));
-    }
+    public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception {}
     public ArrayList<String> getOperations() {
         return s.operations;
     }
@@ -39,7 +47,8 @@ parser code
         return ops + "\n";
     }
     public void operationFinish(Double r) {
-        flowExe.add(new Instruction(s.operations.get(nOp) + " = " + r));nOp += 1;
+        flowExe.add(new Instruction(s.operations.get(nOp) + " = " + r));
+        nOp += 1;
     }
     public String getExecution() {
         String exe = "";
@@ -74,13 +83,9 @@ precedence right UMINUS;
 
 start with ini;
 
-ini ::= LK instructions RK;
+ini ::= LK instructions RK | LK RK;
 
-instructions ::=
-    instruction:a instructions |
-    instruction:a |
-    error instruction:a
-;
+instructions ::= instruction instructions | instruction;
 
 instruction ::= RW_CALCULATE LKS expresion:a RKS SEMICOLON {:RESULT = a;operationFinish(a);:};
 

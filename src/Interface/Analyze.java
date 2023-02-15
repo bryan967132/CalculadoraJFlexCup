@@ -12,9 +12,10 @@ public class Analyze {
                     new StringReader(input.getText())
                 )
             );
+            scanner.yytext();
             Sintactico parser = new Sintactico(scanner);
             parser.parse();
-            output.setText(parser.getExecution());
+            output.setText("Compile:\n" + parser.getExecution());
         } catch (Exception e) {
             System.out.println(e);
         }

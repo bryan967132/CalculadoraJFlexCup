@@ -16,25 +16,13 @@ public class ErrorS {
         this.unr = unr;
     }
     public void print() {
-        if(unr) {
-            System.out.println(
-                "Syntax Error in Line " + line + " Column " + column +
-                ". This Component was not expected: '" + token + "'."
-            );
-        }
-        else {
-            System.out.println(
-                "Unrecovered Syntax Error in Line " + line + " Column " + column +
-                ". Unrecognized Component: '" + token + "'."
-            );
-        }
+        System.out.println(
+            "Syntax Error" + (unr ? " in Line " + line + " Column " + column : "") +
+            ". This Component was not expected: " + token + "."
+        );
     }
     public String toString() {
-        if(unr) {
-            return "Syntax Error in Line " + line + " Column " + column +
-                ". This Component was not expected: '" + token + "'.";
-        }
-        return "Unrecovered Syntax Error in Line " + line + " Column " + column +
-            ". Unrecognized Component: '" + token + "'.";
+        return "Syntax Error" + (unr ? " in Line " + line + " Column " + column : "") +
+            ". This Component was not expected: " + token + ".";
     }
 }
