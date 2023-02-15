@@ -2,13 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/bryan/Documents/NetBeansProjects/Calculadora/build.xml</file>
-            <file>file:/C:/Users/bryan/Documents/NetBeansProjects/Calculadora/src/Generators/Generator.java</file>
-            <file>file:/C:/Users/bryan/Documents/NetBeansProjects/Calculadora/src/Interface/Principal.java</file>
-            <file>file:/C:/Users/bryan/Documents/NetBeansProjects/Calculadora/src/Generators/Parser.java</file>
-            <file>file:/C:/Users/bryan/Documents/NetBeansProjects/Calculadora/src/Analyzers/sym.java</file>
-            <file>file:/C:/Users/bryan/Documents/NetBeansProjects/Calculadora/src/Interface/Analyze.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

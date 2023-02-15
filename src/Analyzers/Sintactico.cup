@@ -18,19 +18,24 @@ parser code
     int nOp = 0;
     int rOp = 0;
     ArrayList<Instruction> flowExe = new ArrayList<>();
-    public void syntax_error(Symbol s) {
-        flowExe.add(
+    ArrayList<Instruction> errors = new ArrayList<>();
+    public void syntax_error(Symbol sym) {
+        errors.add(
             new Instruction(
                 new ErrorS(
-                    s.left,
-                    s.right,
-                    s.value != null ? s.value : "EOF",
-                    s.value != null
+                    sym.left,
+                    sym.right,
+                    sym.value
                 )
             )
         );
+        if(nOp < s.operations.size())nOp ++;
     }
-    public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception {}
+    public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception {
+        errors.add(
+            new Instruction("Unrecovered Syntax Error.")
+        );
+    }
     public ArrayList<String> getOperations() {
         return s.operations;
     }
@@ -48,12 +53,15 @@ parser code
     }
     public void operationFinish(Double r) {
         flowExe.add(new Instruction(s.operations.get(nOp) + " = " + r));
-        nOp += 1;
+        nOp ++;
     }
     public String getExecution() {
         String exe = "";
         for(int i = 0; i < flowExe.size(); i ++) {
             exe += flowExe.get(i) + "\n";
+        }
+        for(int i = 0; i < errors.size(); i ++) {
+            exe += errors.get(i) + "\n";
         }
         return exe + "\n";
     }
@@ -85,7 +93,7 @@ start with ini;
 
 ini ::= LK instructions RK | LK RK;
 
-instructions ::= instruction instructions | instruction;
+instructions ::= instruction instructions | instruction | error instruction;
 
 instruction ::= RW_CALCULATE LKS expresion:a RKS SEMICOLON {:RESULT = a;operationFinish(a);:};
 

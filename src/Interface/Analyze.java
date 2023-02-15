@@ -12,7 +12,6 @@ public class Analyze {
                     new StringReader(input.getText())
                 )
             );
-            scanner.yytext();
             Sintactico parser = new Sintactico(scanner);
             parser.parse();
             output.setText("Compile:\n" + parser.getExecution());
